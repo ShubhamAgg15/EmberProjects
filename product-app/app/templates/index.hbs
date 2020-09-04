@@ -1,0 +1,29 @@
+<h2>Our Products</h2>
+<div class="container">
+    <div class="row">
+        {{#each this.model as |product|}}
+            {{#unless product.isNew}}
+                <div class="col-md-4 col-xs-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>{{product.name}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>ID: {{product.id}}</li>
+                                <li>SKU: {{product.sku}}</li>
+                                <li>Category: {{product.category.name}}</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            Unit Price: <strong>{{product.unitPrice}}</strong>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            {{/unless}}
+        {{else}}
+            No products...
+        {{/each}}
+    </div>
+</div>

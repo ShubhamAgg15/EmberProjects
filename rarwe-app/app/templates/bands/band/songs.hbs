@@ -1,0 +1,77 @@
+{{#if this.model.songs.length}}
+    <div class="mb-8 flex">
+        <span class="relative z-0 inline-flex shadow-sm">
+            <LinkTo class="rounded-l-md inline-flex items-center px-4 py-2 border 
+                border-gray-500 bg-purple-600 leading-5 font-medium text-gray-100 hover:text-white hover:bg-purple-500"
+                data-test-rr="sort-by-title-asc" @query={{hash s="title"}}>
+                Title
+                <FaIcon class="ml-2" @icon="angle-up" @prefix="fas"/>
+            </LinkTo>
+            <LinkTo class="-ml-px inline-flex items-center px-4 py-2 border border-gray-500
+                bg-purple-600 leading-5 font-medium text-gray-100 hover:text-white hover:bg-purple-500"
+                data-test-rr="sort-by-title-desc" @query={{hash s="title:desc"}}>
+                Title
+                <FaIcon class="ml-2" @icon="angle-down" @prefix="fas"/>
+            </LinkTo>
+            <LinkTo type="button" class="rounded-l-md inline-flex items-center px-4 py-2 border 
+                border-gray-500 bg-purple-600 leading-5 font-medium text-gray-100 hover:text-white hover:bg-purple-500"
+                data-test-rr="sort-by-rating-asc" @query={{hash s="rating"}}>
+                Rating
+                <FaIcon class="ml-2" @icon="angle-up" @prefix="fas"/>
+            </LinkTo>
+            <button type="button" class="-ml-px inline-flex items-center px-4 py-2 border border-gray-500
+                bg-purple-600 leading-5 font-medium text-gray-100 hover:text-white hover:bg-purple-500"
+                data-test-rr="sort-by-rating-desc" {{on 'click' (set this.sortBy 'rating:desc')}}>
+                Rating
+                <FaIcon class="ml-2" @icon="angle-down" @prefix="fas"/>
+            </button>
+        </span>
+        <div class="relative ml-auto rounded-md shadow-sm">
+            <Input class="border rounded-md py-2 px-3 block w-full pr-10 text-gray-800 sm:text-sm sm:leading-5"
+                type="text" @value={{this.searchParam}} data-test-rr="search-box"/>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <FaIcon class="h-5 w-5 text-gray-400" @icon="search" @prefix="fas"/>
+            </div>
+        </div>
+    </div>
+    <ul data-test-rr="song-list">
+        {{#each this.sortedSongs as |song|}}
+            <li class="mb-2" data-test-rr="song-list-item">
+                {{capitalize song.title}}
+                <span class="float-right">
+                    <StarRating @maxRating="5" @rating={{song.rating}} @onUpdate={{fn this.updateRating song}}/>
+                </span>
+            </li>
+        {{else}}
+            <p>
+                No song found with given search string
+            </p>
+        {{/each}}
+    </ul>
+{{else}}
+    <p class="text-center" data-test-rr="no-songs-text">
+        The band has no songs yet.
+    </p>
+{{/if}}
+{{#if this.showAddSong}}
+    <div class="flex justify-center mt-2">
+        <button type="button" class="px-4 py-2 rounded bg-purple-600 shadow-md hover:shadow-lg
+            hover:text-white hover:bg-purple-500 focus:outline-none" {{on 'click' (set this.showAddSong false)}}
+            data-test-rr="new-song-button">
+            Add Song
+        </button>
+    </div>
+{{else}}
+    <div class="mt-6 flex">
+        <Input type="text" @value={{this.title}} placeholder="Title" data-test-rr="new-song-name"
+            class="text-gray-800 bg-white rounded-md py-2 px-4"/>
+        <button type="button" class="ml-4 px-4 py-2 rounded bg-purple-600 shadow-md
+hover:shadow-lg hover:text-white" {{on 'click' this.saveSong}} data-test-rr="save-song-button">
+            Save
+        </button>
+        <button type="button" class="ml-2 px-4 p-2 rounded bg-white border border-bg-
+purple-600 shadow-md text-purple-600 hover:shadow-lg" {{on 'click' this.cancelProcess}}>
+            Cancel
+        </button>
+    </div>
+{{/if}}

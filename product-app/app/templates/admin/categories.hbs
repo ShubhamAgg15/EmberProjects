@@ -1,0 +1,39 @@
+<h2>Admin - Categories</h2>
+
+<div class="well well-sm jumbotron">
+ 
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="new-category">New Category:</label>
+            <Input @type="text" @class="form-control" id="new-category" @value={{this.newCategory.name}} placeholder="Add new category"/>
+        </div>
+        <button type="button" class="btn btn-success" {{action 'addCategory'}}>Add</button>
+    </form>
+
+</div>
+
+<p>List of categories</p>
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Product Count</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.categories as |category|}}
+            {{#unless category.isNew}}
+                <tr>
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.products.length}}</td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-danger" {{action 'deleteCategory' category}}>Delete</button>
+                    </td>
+                </tr>
+            {{/unless}}
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+<div>
+    <h2>{{this.model.name}}</h2>
+    <span>{{this.model.email}}</span>
+    <p>{{this.model.bio}}</p>
+    <span>Created {{format-date this.model.creationDate}}</span>
+</div>
+<LinkTo @route="users.user.edit">
+    <button type="button">Edit</button>
+</LinkTo>
+
+<button type="button" {{on 'click' this.DeleteUser}}>Delete</button>
+
+{{#if this.deleteMode}}
+    <button type="button" {{on 'click' this.ConfirmDelete}}>Yes</button>
+    <button type="button" {{on 'click' this.CancelDelete}}>No</button>
+{{/if}}
+
+{{outlet}}

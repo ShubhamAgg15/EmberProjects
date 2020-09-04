@@ -1,0 +1,49 @@
+<div class="container">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+            <button class = "navbar-toggler" type = "button" data-toggle = "collapse" 
+               data-target = "#main-navbar" 
+               aria-controls = "main-navbar" aria-expanded = "false" 
+               aria-label = "Toggle navigation">
+
+               <span class = "navbar-toggler-icon"></span>
+            </button>
+            <LinkTo @route="index" class="navbar-brand">Library App</LinkTo>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <LinkTo @route="index" class="nav-link">Home</LinkTo>
+                </li>
+                <li class="nav-item">
+                    <LinkTo @route="about" class="nav-link">About</LinkTo>
+                </li>
+                <li class="nav-item">
+                    <LinkTo @route="contact" class="nav-link">Contact</LinkTo>
+                </li>
+                <li class="nav-item">
+                    <LinkTo @route="libraries" class="nav-link">Libraries</LinkTo>
+                </li>
+                <li class="nav-item">
+                    <LinkTo @route="authors" class="nav-link">Authors</LinkTo>
+                </li>
+                <li class="nav-item">
+                    <LinkTo @route="books" class="nav-link">Books</LinkTo>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenu" role="button" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <LinkTo class="dropdown-item" @route="admin.invitations">Invitations</LinkTo>
+                        <LinkTo class="dropdown-item" @route="admin.contacts">Contacts</LinkTo>
+                        <LinkTo class="dropdown-item" @route="admin.seeder">Seeder</LinkTo>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {{outlet}}
+
+</div>
+

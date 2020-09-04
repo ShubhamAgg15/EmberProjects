@@ -1,0 +1,7 @@
+{
+  "name": "blog-app",
+  "dependencies": {
+    "pikaday": "^1.8.0",
+    "moment": "^2.27.0"
+  }
+}

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row lgfrm">
+            <div class="col-sm-12">
+                {{#if this.error}}
+                    <div class="form-group">{{this.error}}</div>
+                {{/if}}
+                <div class="form-group">
+                    <label>Username</label>
+                    <Input type="text" class="form-control" placeholder="Enter username" @value={{this.email}}/>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <Input type="password" class="form-control" placeholder="Enter password" @value={{this.password}}/>
+                </div>
+                <button type="button" class="btn btn-default full-width" {{on 'click' this.login}}>Login</button>
+            </div>
+        </div>
+    </div>
+</div>

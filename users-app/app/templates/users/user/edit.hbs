@@ -1,0 +1,20 @@
+<div>
+    <label>Choose user name</label>
+    <Input @value={{this.model.name}}/>
+</div>
+
+<div>
+    <label>Choose user avatar</label>
+    <Input @value={{this.model.avatarUrl}}/>
+</div>
+
+<div>
+    <label>Choose user email</label>
+    <Input @value={{this.model.email}}/>
+</div>
+<div>
+    <label>Choose user bio</label>
+    <Input @value={{this.model.bio}}/>
+</div>
+
+<button type="button" {{on "click" this.SaveChanges}}>Save</button>

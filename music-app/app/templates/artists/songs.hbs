@@ -1,0 +1,10 @@
+<div class="list-group-item">
+    <Input type="text" placeholder="New Song" @value={{this.newSong.name}}/>
+    <button type="button" class="btn btn-primary btn-sm" disabled={{this.isDisabled}} {{action "addSong"}}>Add</button>
+</div>
+
+{{#each this.model.songs as |song|}}
+    <div class="list-group-item">
+        {{song.name}}
+    </div>
+{{/each}}

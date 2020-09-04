@@ -1,0 +1,7 @@
+<div class="p-q">
+    <div class="inner">
+        {{#each this.sortedQuotes as |quote|}}
+            <ListQuotes::Quote-Message @quote={{quote}}/>
+        {{/each}}
+    </div>
+</div>

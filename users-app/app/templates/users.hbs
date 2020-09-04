@@ -1,0 +1,19 @@
+<h2>List of {{this.sortedUsers.length}} users</h2>
+
+<ul>
+    {{#each this.sortedUsers as |user|}}
+        <li>
+            <LinkTo @route='users.user' @model={{user.id}}>
+                {{user.name}}
+            </LinkTo>
+        </li>
+    {{else}}
+        <li>no users...</li>
+    {{/each}}
+</ul>
+
+<LinkTo @route="users.create">
+    <button type="button">Add User</button>
+</LinkTo>
+
+{{outlet}}

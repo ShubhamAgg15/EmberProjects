@@ -1,0 +1,29 @@
+<div class="col-sm-4">
+    <div class="pro-m">
+        <div class="t-bg"></div>
+        <div class="form-group">
+            <LinkTo @route="user" class="secbox">
+                <img src="/images/gravatar.png" alt="gravatar">
+                <h2>{{@user.userName}}</h2>
+                <p>@{{@user.userName}}</p>
+                <div>{{@user.aboutMe}}</div>
+            </LinkTo>
+        </div>
+        <div class="form-group">
+            <div class="row mrgn-m">
+                <div class="col-md-4">
+                    <span class="small-txt">quotes</span>
+                    <span class="big-txt">{{@user.numberOfQuotes}}</span>
+                </div>
+                <div class="col-md-4">
+                    <span class="small-txt">following</span>
+                    <span class="big-txt"><LinkTo @route="user.following"> {{@user.numberOfFollowing}} </LinkTo></span>
+                </div>
+                <div class="col-md-4">
+                    <span class="small-txt">followers</span>
+                    <span class="big-txt"><LinkTo @route="user.follower"> {{@user.numberOfFollowers}} </LinkTo></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

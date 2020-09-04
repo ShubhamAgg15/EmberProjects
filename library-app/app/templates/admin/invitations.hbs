@@ -1,0 +1,17 @@
+<h3>Invitations are </h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.model.invitations as |invitation|}}
+        <tr>
+            <th>{{invitation.id}}</th>
+            <td>{{invitation.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

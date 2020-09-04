@@ -1,0 +1,25 @@
+<h3>Seeder, our data center</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <NumberBox @title="Libraries" @number={{this.model.libraries.length}}/>
+        <NumberBox @title="Authors" @number={{this.model.authors.length}}/>
+        <NumberBox @title="Books" @number={{this.model.books.length}}/>
+    </div>
+</div>
+
+<SeederBlock @sectionTitle="Libraries"
+    @generateAction={{this.generateLibraries}}
+    @deleteAction={{this.deleteLibraries}}
+    @generateReady={{this.libDone}}
+    @deleteReady={{this.libDelDone}}
+    @generateInProgress={{this.generateLibrariesInProgress}}
+    @deleteInProgress={{this.deleteLibrariesInProgress}}/>
+
+<SeederBlock @sectionTitle='Authors with Books'
+    @generateAction={{this.generateBooksAndAuthors}}
+    @deleteAction={{this.deleteBooksAndAuthors}}
+    @generateReady={{this.authDone}}
+    @deleteReady={{this.authDelDone}}
+    @generateInProgress={{this.generateBooksInProgress}}
+    @deleteInProgress={{this.deleteBooksInProgress}}/>

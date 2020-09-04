@@ -1,0 +1,40 @@
+<div class="col-sm-8">
+    <div class="ilm">
+        <ul class="list-inline m">
+            <li>
+                <LinkTo @route="user.index" activeClass="active">
+                    <span class="small-txt">Quotes</span>
+                    <span class="big-txt">{{@user.numberOfQuotes}}</span>
+                </LinkTo>
+            </li>
+            <li>
+                <LinkTo @route="user.following" activeClass="active">
+                    <span class="small-txt">Following</span>
+                    <span class="big-txt">{{@user.numberOfFollowing}}</span>
+                </LinkTo>
+            </li>
+            <li>
+                <LinkTo @route="user.follower" activeClass="active">
+                    <span class="small-txt">Followers</span>
+                    <span class="big-txt">{{@user.numberOfFollowers}}</span>
+                </LinkTo>
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="folwr">
+                    <div class="t-line"></div>
+                    <LinkTo @route="user" class="f-box">
+                        <img src="/images/gravatar.png" alt="gravatar">
+                    </LinkTo>
+                    <div class="form-group">
+                        <h2>{{@user.userName}}</h2>
+                        <p>@{{@user.userName}} - {{@user.aboutMe}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

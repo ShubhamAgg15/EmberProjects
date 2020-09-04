@@ -1,0 +1,12 @@
+<ul class="pl-2 pr-8">
+    {{#each this.bands as |item|}}
+        <li class="mb-2" data-test-rr="band-list-item">
+            <LinkTo class="{{if item.isActive "border-l-4 border-purple-400 p1-2"}}" 
+                @route="bands.band" 
+                @model={{item.band.id}}
+                data-test-rr="band-link">
+                {{capitalize item.band.name}}
+            </LinkTo>
+        </li>
+    {{/each}}
+</ul>

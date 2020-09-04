@@ -1,0 +1,62 @@
+<h4>Products</h4>
+
+<form class="form-inline jumbotron">
+    <div class="form-group">
+        <label>Product Name:</label>
+        <Input type="text" class="form-control" placeholder="Product name" @value={{this.newProduct.name}}/>
+        <label>SKU:</label>
+        <Input type="text" class="form-control" placeholder="SKU" @value={{this.newProduct.sku}}/>
+        <label>Unit Price:</label>
+        <Input type="text" class="form-control" placeholder="Unit price" @value={{this.newProduct.unitPrice}}/>
+        <label for="category">Category:</label>
+        <select onchange={{action 'setSelection' value="target.value"}}>
+            <option disabled selected> -- Select Category -- </option>
+                {{#each this.model.categories as |category|}}
+                    <option value={{category.id}}>{{category.name}}</option>
+                {{/each}}
+        </select>
+    </div>
+    <button type="button" class="btn btn-success btn-xs" {{action 'addProduct'}}>Add Product</button>
+</form>
+
+<p>List of products</p>
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>SKU</th>
+            <th>Unit Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.model.products as |product|}}
+            {{#unless product.isNew}}
+                <tr>
+                    <td>{{product.id}}</td>
+                    {{#if product.isEditing}}
+                        <td><Input type="text" @value={{product.name}}/></td>
+                        <td><Input type="text" @value={{product.sku}}/></td>
+                        <td><Input type="text" @value={{product.unitPrice}}/></td>
+                        <td><Input type="text" @value={{product.category.name}}/></td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-success" {{action 'saveChanges' product}}>Save</button>
+                            <button type="button" class="btn btn-xs" {{action 'cancelChanges' product}}>Cancel</button>
+                        </td>
+                    {{else}}
+                        <td>{{product.name}}</td>
+                        <td>{{product.sku}}</td>
+                        <td>{{product.unitPrice}}</td>
+                        <td>{{product.category.name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-danger" {{action 'deleteProduct' product}}>Del</button>
+                            <button type="button" class="btn btn-xs" {{action 'editProduct' product}}>Edit</button>
+                        </td>
+                    {{/if}}
+                </tr>
+            {{/unless}}
+        {{/each}}
+    </tbody>
+</table>

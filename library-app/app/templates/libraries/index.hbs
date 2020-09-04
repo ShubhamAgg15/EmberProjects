@@ -1,0 +1,9 @@
+<h2>List</h2>
+
+<div class="row">
+    {{#each this.model as |library|}}
+        <div class="col-md-4">
+            <LibraryItem @item={{library}} @deleteAction={{this.DeleteLibrary}}/>                
+        </div>
+    {{/each}}
+</div>

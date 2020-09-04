@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-1">
+        <img src="images/gravatar.png" alt="avatar">
+    </div>
+    <div class="col-sm-11">
+        <h2><LinkTo @route="user">{{@quote.user.userName}}</LinkTo><small>@{{@quote.user.userName}}</small></h2>
+        <p>{{@quote.text}}</p>
+        <p>{{moment-from-now @quote.createdDate}}</p>
+    </div>
+</div>

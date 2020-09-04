@@ -1,0 +1,30 @@
+<div class="well well-sm extra-padding-bottom">
+    <h3>{{@sectionTitle}}</h3>
+
+    <div class="form-inline">
+
+        <div class="form-group has-feedback {{unless this.isCounterValid 'has-error'}}">
+            <label class="control-label">Number of new records:</label>
+            <Input type="text" class="form-control" @placeholder={{this.placeholder}} @value={{this.counter}}/>
+        </div>
+
+        <button type="button" class="btn btn-primary" {{on 'click' this.generateAction}} disabled={{this.generateIsDisabled}}>
+            {{#if @generateInProgress}}
+                <span class="glyphicon glyphicon-refresh spinning"></span> Generating...
+            {{else}}
+                Generate {{@sectionTitle}}
+            {{/if}}
+        </button>
+
+        <FaberLabel @isShowing={{@deleteReady}}>Deleted!</FaberLabel>
+    </div>
+</div>
+
+{{!-- 
+<SeederBlock @sectionTitle="Libraries"
+    @generateAction={{this.generateLibraries}}
+    @deleteAction={{this.deleteLibraries}}
+    @generateReady={{this.libDone}}
+    @deleteReady={{this.libDelDone}}
+    @generateInProgress={{this.generateLibrariesInProgress}}
+    @deleteInProgress={{this.deleteLibrariesInProgress}}/> --}}

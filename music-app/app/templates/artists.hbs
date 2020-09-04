@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <Input type="text" class="new-artist" placeholder="New Artist" @value={{this.newArtist.name}}/>
+                    <button type="button" class="btn btn-primary btn-sm" disabled={{this.isDisabled}} {{action "addArtist"}}>Add</button>
+                </div>
+                {{#each this.model as |artist|}}
+                    {{#unless artist.isNew}}
+                        <LinkTo @route="artists.songs" @model={{artist.id}} class="list-group-item artist-link">
+                            {{artist.name}}
+                            <span class="pointer glyphicon glyphicon-chevron-right"></span>
+                        </LinkTo>
+                    {{/unless}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="list-group">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
+</div>

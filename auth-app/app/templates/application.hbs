@@ -1,0 +1,14 @@
+<h1>Auth app</h1>
+
+{{#if this.session.isAuthenticated}}
+    <button type="button" {{on 'click' this.logout}}>logout</button>
+{{else}}
+    <Input type="text" placeholder="Email" @value={{this.email}}/>
+    <Input type="password" placeholder="Password" @value={{this.password}}/>
+    <button type="button" {{on 'click' this.login}}>Login</button>
+{{/if}}
+
+<h2>{{t "hello world" name="shubham"}}</h2>
+<h2>{{t "awesome" name1=this.name1 name2=this.name2 name3=this.name3}}</h2>
+
+{{outlet}}
